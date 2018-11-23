@@ -1,8 +1,16 @@
-/* This is a c code for calculating the radiation coefficent of upgoing p,sv,sh wave.
-2018-11-20 Updating by Junqing Liu
+/* This is a simple c code for calculating the theory radiation coefficient of upgoing p,sv,sh wave.
+
+According to the formulas 4.89, 4.90, 4.91. (Aki,2002. Quantitative seismology)
+
+2018-11-20 Updating by Junqing Liu (刘俊清)
+Email:woxin5295@yahoo.com
 */
 
-
+/***************************/
+Cp  : P wave radiation coefficient.
+Csv : SV wave radiation coefficient.
+Csh : SH wave radiation coefficient.
+/***************************/
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -32,7 +40,7 @@ int main(int argc, char *argv[])
 	for (i=0;i<=90;i++) {
 	
 		iup=i*PI/180;
-		lat=-i;
+		lat=-i;  /* For '-JS' projection of GMT */
 
 		for (phi=0;phi<360;phi++) {
 		
@@ -57,7 +65,7 @@ int main(int argc, char *argv[])
 			 Cp=fabs(Cp);
 			Csv=fabs(Csv);
 			Csh=fabs(Csh);
-			
+// the follow codes only for upgoing waves.			
 			if(phi>180) {
 				
 				azi=phi-180;
@@ -67,7 +75,7 @@ int main(int argc, char *argv[])
 				azi=(180+phi);
 			}
 
-			if(strcmp(argv[4],"p") == 0 ) {printf("%3d %3d %4.3f\n",azi,lat,Cp);}
+			if(strcmp(argv[4],"p")  == 0) {printf("%3d %3d %4.3f\n",azi,lat,Cp); }
 			if(strcmp(argv[4],"sv") == 0) {printf("%3d %3d %4.3f\n",azi,lat,Csv);}
 			if(strcmp(argv[4],"sh") == 0) {printf("%3d %3d %4.3f\n",azi,lat,Csh);}
 			
