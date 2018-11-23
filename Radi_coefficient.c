@@ -1,4 +1,4 @@
-/* This is a simple c code for calculating the theory radiation coefficient of upgoing p,sv,sh wave.
+/* This is a simple c  for calculating the theory radiation coefficient of upgoing p,sv,sh wave.
 
 According to the formulas 4.89, 4.90, 4.91. (Aki,2002. Quantitative seismology)
 
